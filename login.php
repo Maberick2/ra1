@@ -1,16 +1,17 @@
 <?php
-$servername = "localhost"; 
-$username = "Roberto";
-$password = "Ramirez2024";
-$dbname = "vuelos"; 
+$servername = "localhost";
+$username = "root";
+$password = "Aylin2024!";
+$dbname = "flight_reservation";
+
+
+session_start();
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $correo = $_POST['correo'];

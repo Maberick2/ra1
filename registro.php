@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost"; 
-$username = "Roberto";
-$password = "Ramirez2024";
-$dbname = "vuelos"; 
+$servername = "localhost";
+$username = "root";
+$password = "Aylin2024!";
+$dbname = "flight_reservation";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
