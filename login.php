@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "Aylin2024!";
-$dbname = "flight_reservation";
+$dbname = "vuelos";
 
 
 session_start();

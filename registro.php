@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "Aylin2024!";
-$dbname = "flight_reservation";
+$dbname = "vuelos";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
