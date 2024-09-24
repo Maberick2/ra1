@@ -1,6 +1,17 @@
 <?php
-require 'conexion.php';
+$servername = "localhost";
+$username = "root";
+$password = "Aylin2024!";
+$dbname = "vuelos";
+
+
 session_start();
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
 
 // Redirigir a login.php si no está iniciado sesión
 if (!isset($_SESSION['id_usuario'])) {

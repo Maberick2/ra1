@@ -1,6 +1,16 @@
 <?php
-require 'conexion.php';
+$servername = "localhost";
+$username = "root";
+$password = "Aylin2024!";
+$dbname = "vuelos";
+
 session_start();
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
 
 if (!isset($_SESSION['id_usuario'])) {
     echo "Por favor, <a href='login.php'>inicia sesión</a para reservar un vuelo.";

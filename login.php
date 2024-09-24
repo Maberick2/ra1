@@ -4,14 +4,7 @@ $username = "root";
 $password = "Aylin2024!";
 $dbname = "vuelos";
 
-
 session_start();
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $correo = $_POST['correo'];

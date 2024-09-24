@@ -1,6 +1,15 @@
 <?php
-require 'conexion.php';
+$servername = "localhost";
+$username = "root";
+$password = "Aylin2024!";
+$dbname = "vuelos";
 session_start();
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
 
 // Verificar si el usuario está autenticado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
