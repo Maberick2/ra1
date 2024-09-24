@@ -1,5 +1,14 @@
 <?php
-require 'conexion.php';
+$servername = "localhost"; 
+$username = "Roberto";
+$password = "Ramirez2024";
+$dbname = "vuelos"; 
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre'];
@@ -20,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("sss", $nombre, $correo, $contrasena);
 
         if ($stmt->execute()) {
+          header("Location: login.php"); // Redireccionar a index.php al iniciar sesi
             echo "<div class='success'>Registro exitoso. <a href='login.php'>Iniciar sesión</a></div>";
         } else {
             echo "<div class='error'>Error al registrar usuario.</div>";

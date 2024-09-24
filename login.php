@@ -1,5 +1,15 @@
 <?php
-require 'conexion.php';
+$servername = "localhost"; 
+$username = "Roberto";
+$password = "Ramirez2024";
+$dbname = "vuelos"; 
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -18,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($contrasena, $hashed_contrasena)) {
             $_SESSION['id_usuario'] = $id;
             $_SESSION['nombre_usuario'] = $nombre_usuario; 
-            header("Location: index.php"); // Redireccionar a index.php al iniciar sesión
+            header("Location: buscar_vuelos.php"); // Redireccionar a index.php al iniciar sesión
             exit;
         } else {
             echo "<div class='error'>Contraseña incorrecta.</div>";
