@@ -25,7 +25,7 @@ if (isset($_GET['id_vuelo'])) {
     $stmt->bind_param("ii", $id_usuario, $id_vuelo);
 
     if ($stmt->execute()) {
-        echo "Reservación realizada exitosamente. <a href='reservaciones.php'>Ver mis reservaciones</a>";
+        echo "Reservación realizada exitosamente. <a href='tusreservaciones.php'>Ver mis reservaciones</a>";
     } else {
         echo "Error al realizar la reservación.";
     }
@@ -33,3 +33,4 @@ if (isset($_GET['id_vuelo'])) {
     echo "No se especificó ningún vuelo.";
 }
 ?>
+

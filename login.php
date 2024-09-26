@@ -6,6 +6,12 @@ $dbname = "vuelos";
 
 session_start();
 
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
@@ -40,31 +46,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+        /* Estilos generales */
+        html, body {
+            height: 100%;
             margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #005f73;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            flex-direction: column;
         }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: url('https://2.bp.blogspot.com/-4zTGeP6ktmw/UaAIttq6PiI/AAAAAAAByik/iC8r8TjY0PE/s1600/towards-the-sunset-1920x1200-wallpaper-amanecer-visto-desde-un-avi%C3%B3n-vistas-a%C3%A9reas.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #03001e;
+            line-height: 1.6;
+            flex-grow: 1;
         }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(34, 145, 38, 0.2);
+        }
+
         .login-container {
-            background-color: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -73,56 +82,114 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-align: center;
             margin-top: 50px;
         }
+
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
-            color: #005f73;
+            color: #7303c0;
         }
+
         label {
             display: block;
             margin: 10px 0 5px;
+            color: #ec38bc;
+            font-weight: bold;
         }
+
         input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 2px solid #7303c0;
+            border-radius: 8px;
+            background: #fdeff9;
             font-size: 16px;
         }
+
         button {
-            background-color: #005f73; /* Color verde */
+            padding: 10px 20px;
+            background-color: #ec38bc;
             color: white;
             border: none;
-            padding: 12px;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
             font-size: 16px;
             transition: background-color 0.3s;
         }
+
         button:hover {
-            background-color: #004f59; /* Color verde más oscuro */
+            background-color: #7303c0;
         }
+
         .error {
             color: #ff4d4d; /* Color rojo para errores */
             margin-bottom: 15px;
         }
+
+        header {
+            text-align: center; /* Centrar el texto del encabezado */
+        }
+
+        nav {
+            background-color: rgba(3, 0, 30, 0.9);
+            padding: 1rem;
+            border-bottom: 2px solid #ec38bc;
+            text-align: center; /* Centrar el contenido del nav */
+        }
+
+        nav a {
+            color: #ec38bc;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #7303c0;
+        }
+
+        nav span {
+            color: #ffffff;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        
+
         footer {
+            background-color: rgba(3, 0, 30, 0.9);
+            padding: 20px;
             text-align: center;
-            margin-top: 20px;
-            color: #555;
+            color: #ec38bc;
+            border-top: 2px solid #ec38bc;
+            margin-top: auto;  /* Esto empuja el footer al final de la página */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        footer a {
+            color: #ec38bc;
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            color: #7303c0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Bienvenido a la Agencia de Viajes</h1>
         <nav>
             <a href="index.php">Inicio</a>
-            <a href="buscar_vuelos.php">Buscar Vuelos</a>
-            <a href="reservaciones.php">Ver Reservaciones</a>
+            <a href="buscar_vuelos.php">Crear Vuelos</a>
+            <a href="reservaciones.php">Ver vuelos</a>
+            <a href="tusreservaciones.php">Ver tus Reservaciones</a>
             <?php if (isset($_SESSION['id_usuario'])): ?>
                 <span>Hola, <?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?></span>
                 <a href="logout.php">Cerrar Sesión</a>
@@ -148,3 +215,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </footer>
 </body>
 </html>
+

@@ -23,7 +23,6 @@ $id_usuario = $_SESSION['id_usuario'];
 // Verificar el ID del usuario
 echo "ID de usuario: " . htmlspecialchars($id_usuario); // Para verificar el ID del usuario de manera segura
 
-
 // Consulta para obtener los vuelos disponibles
 $stmt = $conn->prepare("SELECT id, origen, destino, fecha_salida, fecha_llegada, precio FROM vuelos");
 $stmt->execute();
@@ -137,11 +136,10 @@ $result = $stmt->get_result();
             background-color: rgba(3, 0, 30, 0.9);
             padding: 1rem;
             border-bottom: 2px solid #ec38bc;
-            text-align: center; /* Centrar el contenido del nav */
         }
 
         nav a {
-            color: #ec38bc;
+            color: white;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
@@ -149,7 +147,7 @@ $result = $stmt->get_result();
         }
 
         nav a:hover {
-            color: #7303c0;
+            color: #a8dadc;
         }
 
         nav span {
@@ -157,6 +155,7 @@ $result = $stmt->get_result();
             margin-right: 20px;
             font-weight: bold;
         }
+
         /* Diseño del footer */
         .footer {
             background-color: rgba(3, 0, 30, 0.9);
